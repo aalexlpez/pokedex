@@ -9,8 +9,8 @@ export default function Footer() {
   const isDarkPage = pathname.startsWith('/pokemon/');
   
   const footerClasses = isDarkPage 
-    ? "bg-gradient-to-r from-gray-900 via-black to-gray-900 text-white border-t-2 border-gray-700"
-    : "bg-gradient-to-r from-blue-600 via-blue-700 to-blue-600 text-white border-t-2 border-blue-800";
+    ? "bg-gradient-to-r from-gray-900 via-black to-gray-900 text-white"
+    : "bg-gradient-to-r from-blue-600 via-blue-700 to-blue-600 text-white";
     
   const textClasses = isDarkPage
     ? "text-gray-300"
@@ -31,9 +31,6 @@ export default function Footer() {
           </div>
           <p className={`text-sm sm:text-lg font-medium font-mono ${textClasses}`}>
             Desarrollado con Next.js y Pokeapi
-          </p>
-          <p className={`text-xs sm:text-sm font-mono ${subTextClasses}`}>
-            UNA POKÉDEX MODERNA
           </p>
         </div>
       </div>

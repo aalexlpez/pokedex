@@ -42,9 +42,7 @@ export default function PokemonCard({ pokemon, showId = false, showDetails = tru
               {showId && (
                 <p className="text-xs text-gray-300 mb-1 font-mono">#{pokemon.id.toString().padStart(3, '0')}</p>
               )}
-              <div className="text-xs text-gray-400 font-mono">
-                POKÉMON DATA
-              </div>
+
             </div>
           </div>
 

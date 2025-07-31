@@ -10,8 +10,8 @@ export default function Header() {
   const isDarkPage = pathname.startsWith('/pokemon/');
   
   const headerClasses = isDarkPage 
-    ? "bg-gradient-to-r from-gray-900 via-black to-gray-900 text-white border-b-2 border-gray-700 py-1"
-    : "bg-gradient-to-r from-red-600 via-red-700 to-red-600 text-white border-b-2 border-red-800 py-1";
+    ? "bg-gradient-to-r from-gray-900 via-black to-gray-900 text-white py-1"
+    : "bg-gradient-to-r from-red-600 via-red-700 to-red-600 text-white py-1";
     
   const hoverClasses = isDarkPage 
     ? "hover:bg-gray-800 hover:text-yellow-300"

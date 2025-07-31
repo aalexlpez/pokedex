@@ -23,7 +23,7 @@ export default async function HomePage() {
   const mostCommonType = Object.entries(typeCounts).sort((a, b) => b[1] - a[1])[0];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-red-50">
+    <div className="min-h-screen bg-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="space-y-12">
           {/* Hero Section */}
@@ -126,7 +126,7 @@ export default async function HomePage() {
             </p>
             <Link
               href="/random"
-              className="inline-block bg-gradient-to-r from-red-500 to-blue-500 text-white px-8 py-4 rounded-full font-bold text-lg hover:from-red-600 hover:to-blue-600 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center space-x-2"
+              className="inline-block bg-gradient-to-r from-blue-600 to-blue-400 text-white px-8 py-4 rounded-full font-bold text-lg hover:from-red-600 hover:to-blue-600 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center space-x-2"
             >
               <span>Ver Pokémon Aleatorios</span>
             </Link>
