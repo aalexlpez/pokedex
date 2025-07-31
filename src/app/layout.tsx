@@ -9,6 +9,9 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Pokédex",
   description: "Una Pokédex moderna construida con Next.js y PokeAPI",
+  icons: {
+    icon: '/favicon.png',
+  },
 };
 
 export default function RootLayout({

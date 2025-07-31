@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import PokemonCard from "@/components/PokemonCard";
 import { Pokemon } from "@/types/pokemon";
-import { countVowels, formatPokemonName } from "@/lib/pokemon-api";
+import { countVowels } from "@/lib/pokemon-api";
 import type { VowelCount } from "@/types/pokemon";
 
 export default function RandomPokemonSection() {
@@ -22,6 +22,7 @@ export default function RandomPokemonSection() {
             setPokemons(data);
             setVowelCount(countVowels(data.map((p: Pokemon) => p.name)));
         } catch (err) {
+            console.log(err);
             setError("No se pudieron cargar los pokemones aleatorios.");
         } finally {
             setLoading(false);

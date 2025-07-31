@@ -1,26 +1,9 @@
-import { getPokemonList, getPokemon } from '@/lib/pokemon-api';
+import { getPokemonList } from '@/lib/pokemon-api';
 import PokemonCard from '@/components/PokemonCard';
 import Link from 'next/link';
 
 export default async function HomePage() {
   const pokemons = await getPokemonList(1, 9);
-
-  // Obtener datos completos para el análisis
-  const pokemonDetails = await Promise.all(
-    pokemons.map(pokemon => getPokemon(pokemon.id))
-  );
-
-  // Calcular estadísticas más interesantes
-  const types = pokemonDetails.flatMap(pokemon =>
-    pokemon.types?.map(type => type.type.name) || []
-  );
-  const uniqueTypes = [...new Set(types)];
-  const typeCounts = types.reduce((acc, type) => {
-    acc[type] = (acc[type] || 0) + 1;
-    return acc;
-  }, {} as Record<string, number>);
-
-  const mostCommonType = Object.entries(typeCounts).sort((a, b) => b[1] - a[1])[0];
 
   return (
     <div className="min-h-screen bg-gray-100">

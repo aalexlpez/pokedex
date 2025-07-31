@@ -16,9 +16,6 @@ export default function Footer() {
     ? "text-gray-300"
     : "text-white";
     
-  const subTextClasses = isDarkPage
-    ? "text-gray-500"
-    : "text-blue-200";
 
   return (
     <footer className={`${footerClasses} py-6 sm:py-8`}>
