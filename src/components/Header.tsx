@@ -5,10 +5,11 @@ import { usePathname } from 'next/navigation';
 
 export default function Header() {
   const pathname = usePathname();
-  
-  // Determinar si estamos en una página con fondo oscuro
-  const isDarkPage = pathname.startsWith('/pokemon/');
-  
+
+  // Forzar rojo en la 404
+  const is404 = pathname === "/404" || pathname === "/not-found";
+  const isDarkPage = pathname.startsWith('/pokemon/') && !is404;
+
   const headerClasses = isDarkPage 
     ? "bg-gradient-to-r from-gray-900 via-black to-gray-900 text-white py-1"
     : "bg-gradient-to-r from-red-600 via-red-700 to-red-600 text-white py-1";
