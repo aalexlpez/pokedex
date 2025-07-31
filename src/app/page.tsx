@@ -1,4 +1,4 @@
-import { getPokemonList, getPokemon } from '@/lib/pokemon-api';
+import { getPokemonList, getPokemon, getTypeColor } from '@/lib/pokemon-api';
 import PokemonCard from '@/components/PokemonCard';
 import Link from 'next/link';
 
@@ -23,7 +23,7 @@ export default async function HomePage() {
   const mostCommonType = Object.entries(typeCounts).sort((a, b) => b[1] - a[1])[0];
 
   return (
-    <div className="min-h-screen bg-gray-200">
+    <div className="min-h-screen bg-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="space-y-12">
           {/* Hero Section */}
@@ -100,18 +100,15 @@ export default async function HomePage() {
                 </svg>
                 <span>Distribución de Tipos</span>
               </h3>
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
                 {Object.entries(typeCounts).map(([type, count]) => (
-                  <div key={type} className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl p-4 border border-gray-300 hover:shadow-md transition-all duration-300">
+                  <div
+                    key={type}
+                    className={`rounded-xl p-4 border border-gray-300 hover:shadow-md transition-all duration-300 ${getTypeColor(type)}`}
+                  >
                     <div className="flex items-center justify-between">
-                      <span className="font-medium text-gray-700 capitalize">{type}</span>
-                      <span className="text-2xl font-bold text-blue-600">{count}</span>
-                    </div>
-                    <div className="mt-2 w-full bg-gray-200 rounded-full h-2">
-                      <div 
-                        className="bg-gradient-to-r from-blue-400 to-blue-600 h-2 rounded-full transition-all duration-300"
-                        style={{ width: `${(count / pokemons.length) * 100}%` }}
-                      ></div>
+                      <span className="font-medium text-white capitalize">{type}</span>
+                      <span className="text-2xl font-bold text-white">{count}</span>
                     </div>
                   </div>
                 ))}

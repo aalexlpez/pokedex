@@ -67,7 +67,7 @@ export default function RandomPokemonSection() {
                 <div className="max-w-4xl mx-auto px-4 mt-12">
                     <div className="bg-white rounded-2xl shadow-lg p-8 border border-gray-300">
                         <h2 className="text-2xl font-bold text-gray-800 mb-8 text-center flex items-center justify-center space-x-3">
-                            <svg className="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                            <svg className="w-12 md:w-8 h-12 md:h-8 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4zm2 2H5V5h14v14zm0-16H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z" />
                             </svg>
                             <span>Conteo de vocales en los nombres</span>
@@ -75,7 +75,7 @@ export default function RandomPokemonSection() {
                         <div className="overflow-x-auto">
                             <table className="w-full max-w-md mx-auto">
                                 <thead>
-                                    <tr className="border-b-2 border-gray-200">
+                                    <tr className="border-b-2 border-gray-300">
                                         <th className="text-left py-4 px-6 font-bold text-gray-700 text-lg">Vocal</th>
                                         <th className="text-right py-4 px-6 font-bold text-gray-700 text-lg">Repeticiones</th>
                                     </tr>
@@ -97,8 +97,8 @@ export default function RandomPokemonSection() {
                             </table>
                         </div>
                         {/* Summary Stats */}
-                        <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4">
-                            <div className="text-center p-4 bg-gradient-to-br from-red-50 to-red-100 rounded-xl">
+                        <div className="mt-8 grid grid-cols-2 md:grid-cols-3 gap-4">
+                            <div className="text-center p-4 border border-red-300 bg-gradient-to-br from-red-50 to-red-100 rounded-xl">
                                 <div className="flex justify-center mb-2">
                                     <svg className="w-6 h-6 text-red-600" fill="currentColor" viewBox="0 0 24 24">
                                         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
@@ -109,7 +109,7 @@ export default function RandomPokemonSection() {
                                 </div>
                                 <div className="text-sm text-gray-600">Total Vocales</div>
                             </div>
-                            <div className="text-center p-4 bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl">
+                            <div className="text-center p-4 border border-blue-300 bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl">
                                 <div className="flex justify-center mb-2">
                                     <svg className="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
                                         <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
@@ -120,7 +120,7 @@ export default function RandomPokemonSection() {
                                 </div>
                                 <div className="text-sm text-gray-600">Vocales Únicas</div>
                             </div>
-                            <div className="text-center p-4 bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-xl">
+                            <div className="col-span-2 text-center p-4 border border-yellow-300 bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-xl">
                                 <div className="flex justify-center mb-2">
                                     <svg className="w-6 h-6 text-yellow-600" fill="currentColor" viewBox="0 0 24 24">
                                         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
@@ -131,24 +131,13 @@ export default function RandomPokemonSection() {
                                 </div>
                                 <div className="text-sm text-gray-600">Longitud Promedio</div>
                             </div>
-                            <div className="text-center p-4 bg-gradient-to-br from-green-50 to-green-100 rounded-xl">
-                                <div className="flex justify-center mb-2">
-                                    <svg className="w-6 h-6 text-green-600" fill="currentColor" viewBox="0 0 24 24">
-                                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
-                                    </svg>
-                                </div>
-                                <div className="text-2xl font-bold text-green-600">
-                                    {pokemons.length}
-                                </div>
-                                <div className="text-sm text-gray-600">Pokémon Mostrados</div>
-                            </div>
                         </div>
                     </div>
                 </div>
             )}
 
             {/* Botón para recargar */}
-            <div className="text-center space-y-6">
+            <div className="text-center space-y-6 px-4">
                 <p className="text-lg text-gray-600">
                     ¿Quieres explorar más Pokémon aleatorios?
                 </p>
@@ -159,18 +148,6 @@ export default function RandomPokemonSection() {
                     <span>Haz click aquí</span>
                 </button>
             </div>
-
-            {/* <div className="text-center space-y-6">
-                <p className="text-lg text-gray-600">
-                    ¿Quieres explorar más Pokémon aleatorios?
-                </p>
-                <Link
-                    href="/random"
-                    className="inline-block bg-gradient-to-r from-blue-600 to-blue-400 text-white px-8 py-4 rounded-full font-bold text-lg hover:from-red-600 hover:to-blue-600 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center space-x-3 mx-auto"
-                >
-                    <span>Haz click aquí</span>
-                </Link>
-            </div> */}
         </>
     );
 }
