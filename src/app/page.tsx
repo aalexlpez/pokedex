@@ -1,4 +1,4 @@
-import { getPokemonList, getPokemon, getTypeColor } from '@/lib/pokemon-api';
+import { getPokemonList, getPokemon } from '@/lib/pokemon-api';
 import PokemonCard from '@/components/PokemonCard';
 import Link from 'next/link';
 
@@ -11,7 +11,7 @@ export default async function HomePage() {
   );
 
   // Calcular estadísticas más interesantes
-  const types = pokemonDetails.flatMap(pokemon => 
+  const types = pokemonDetails.flatMap(pokemon =>
     pokemon.types?.map(type => type.type.name) || []
   );
   const uniqueTypes = [...new Set(types)];
@@ -24,7 +24,7 @@ export default async function HomePage() {
 
   return (
     <div className="min-h-screen bg-gray-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:pb-20 sm:pt-10">
         <div className="space-y-12">
           {/* Hero Section */}
           <div className="text-center space-y-6">
@@ -52,70 +52,6 @@ export default async function HomePage() {
             ))}
           </div>
 
-          {/* Stats Section */}
-          <div className="mt-16 bg-white/80 backdrop-blur-sm rounded-3xl shadow-2xl p-8 border border-gray-300">
-            <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center flex items-center justify-center space-x-3">
-              <svg className="w-8 h-8 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4zm2 2H5V5h14v14zm0-16H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/>
-              </svg>
-              <span>Análisis de la Colección</span>
-            </h2>
-            
-            {/* Estadísticas Principales */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-              <div className="text-center p-6 bg-gradient-to-br from-red-50 to-red-100 rounded-2xl border border-red-300 hover:shadow-lg transition-all duration-300">
-                <div className="flex justify-center mb-3">
-                  <svg className="w-8 h-8 text-red-600" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                  </svg>
-                </div>
-                <div className="text-4xl font-bold text-red-600 mb-2">{pokemons.length}</div>
-                <div className="text-sm text-gray-600 font-medium">Pokémon</div>
-              </div>
-              <div className="text-center p-6 bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl border border-blue-300 hover:shadow-lg transition-all duration-300">
-                <div className="flex justify-center mb-3">
-                  <svg className="w-8 h-8 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                  </svg>
-                </div>
-                <div className="text-4xl font-bold text-blue-600 mb-2">{uniqueTypes.length}</div>
-                <div className="text-sm text-gray-600 font-medium">Tipos Únicos</div>
-              </div>
-              <div className="text-center p-6 bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-2xl border border-yellow-300 hover:shadow-lg transition-all duration-300">
-                <div className="flex justify-center mb-3">
-                  <svg className="w-8 h-8 text-yellow-600" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                  </svg>
-                </div>
-                <div className="text-4xl font-bold text-yellow-600 mb-2">{mostCommonType?.[0]?.toUpperCase() || 'N/A'}</div>
-                <div className="text-sm text-gray-600 font-medium">Tipo Más Común</div>
-              </div>
-            </div>
-
-            {/* Distribución de Tipos */}
-            <div className="mb-8">
-              <h3 className="text-xl font-bold text-gray-700 mb-4 text-center flex items-center justify-center space-x-2">
-                <svg className="w-6 h-6 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z"/>
-                </svg>
-                <span>Distribución de Tipos</span>
-              </h3>
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-                {Object.entries(typeCounts).map(([type, count]) => (
-                  <div
-                    key={type}
-                    className={`rounded-xl p-4 border border-gray-300 hover:shadow-md transition-all duration-300 ${getTypeColor(type)}`}
-                  >
-                    <div className="flex items-center justify-between">
-                      <span className="font-medium text-white capitalize">{type}</span>
-                      <span className="text-2xl font-bold text-white">{count}</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
           {/* Call to Action */}
           <div className="text-center space-y-4">
             <p className="text-lg text-gray-600">
@@ -130,6 +66,6 @@ export default async function HomePage() {
           </div>
         </div>
       </div>
-    </div>
+    </div >
   );
 }

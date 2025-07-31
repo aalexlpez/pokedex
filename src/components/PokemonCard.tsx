@@ -10,22 +10,22 @@ interface PokemonCardProps {
 }
 
 export default function PokemonCard({ pokemon, showId = false, showDetails = true }: PokemonCardProps) {
-  return (
+  const cardContent = (
     <div className="group relative">
       {/* Pokédex Device */}
-      <div className="relative bg-gradient-to-br from-red-500 via-red-600 to-red-700 rounded-2xl shadow-2xl transform hover:-translate-y-2 transition-all duration-300 overflow-hidden border-4 border-red-800">
+      <div className="relative bg-gradient-to-br from-red-500 via-red-600 to-red-700 rounded-2xl shadow-2xl transform hover:-translate-y-2 transition-all duration-500 overflow-hidden border-4 border-red-800">
 
         {/* Pokédex Top Panel (Left Side) */}
         <div className="relative p-4">
           {/* Main Screen Area */}
-          <div className="bg-black rounded-lg p-3 mb-3 shadow-inner border border-gray-600">
+          <div className="bg-black rounded-lg p-3 mb-3 shadow-inner border border-gray-600 group-hover:border-b-black  group-hover:scale-y-116 group-hover:origin-top transition-all duration-500">
             <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-md p-2 h-32 flex items-center justify-center relative">
               <Image
                 src={pokemon.sprites.other['official-artwork'].front_default || pokemon.sprites.front_default}
                 alt={pokemon.name}
                 width={120}
-                height={120}
-                className="drop-shadow-lg group-hover:scale-110 transition-transform duration-300"
+                height={200}
+                className="drop-shadow-lg group-hover:scale-120 transition-all duration-500"
                 priority
               />
               {/* Screen reflection effect */}
@@ -34,7 +34,7 @@ export default function PokemonCard({ pokemon, showId = false, showDetails = tru
           </div>
 
           {/* Info Screen */}
-          <div className="bg-black rounded-lg p-3 mb-3 shadow-inner border border-gray-600">
+          <div className="bg-black rounded-lg p-3 mb-3 border border-gray-600">
             <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-md p-2 text-white text-center">
               <h3 className="text-sm font-bold mb-1 text-yellow-300 drop-shadow-sm">
                 {formatPokemonName(pokemon.name)}
@@ -42,7 +42,9 @@ export default function PokemonCard({ pokemon, showId = false, showDetails = tru
               {showId && (
                 <p className="text-xs text-gray-300 mb-1 font-mono">#{pokemon.id.toString().padStart(3, '0')}</p>
               )}
-
+              <div className="text-xs text-gray-400 font-mono">
+                POKÉMON DATA
+              </div>
             </div>
           </div>
 
@@ -95,13 +97,9 @@ export default function PokemonCard({ pokemon, showId = false, showDetails = tru
             </div>
 
             {showDetails && (
-              <Link
-                href={`/pokemon/${pokemon.id}`}
-                className="bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 text-black px-4 py-1 rounded-full font-bold text-xs hover:from-yellow-300 hover:via-yellow-400 hover:to-yellow-500 transition-all duration-200 transform hover:scale-105 shadow-md hover:shadow-lg border border-yellow-300"
-                style={{ textDecoration: 'none' }}
-              >
+              <div className="bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 text-black px-4 py-1 rounded-full font-bold text-xs border border-yellow-300">
                 VER DETALLES
-              </Link>
+              </div>
             )}
           </div>
         </div>
@@ -118,4 +116,14 @@ export default function PokemonCard({ pokemon, showId = false, showDetails = tru
       </div>
     </div>
   );
+
+  if (showDetails) {
+    return (
+      <Link href={`/pokemon/${pokemon.id}`} className="block cursor-pointer" style={{ textDecoration: 'none' }}>
+        {cardContent}
+      </Link>
+    );
+  }
+
+  return cardContent;
 }
