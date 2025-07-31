@@ -30,16 +30,12 @@ export async function getPokemonList(startId: number, endId: number): Promise<Po
 }
 
 export async function getRandomPokemons(count: number = 5): Promise<Pokemon[]> {
-  // Generate random odd numbers between 1 and 500
-  const randomIds: number[] = [];
-  while (randomIds.length < count) {
-    const randomId = Math.floor(Math.random() * 500) + 1;
-    if (randomId % 2 === 1 && !randomIds.includes(randomId)) {
-      randomIds.push(randomId);
-    }
-  }
-  
-  const promises = randomIds.map(id => getPokemon(id));
+  // Elegir un número impar aleatorio entre 1 y (500 - (count - 1))
+  const maxStart = 500 - (count - 1); // Para count=5, maxStart=496
+  const start = Math.floor(Math.random() * ((maxStart + 1) / 2)) * 2 + 1;
+  const ids = Array.from({ length: count }, (_, i) => start + i);
+
+  const promises = ids.map(id => getPokemon(id));
   return Promise.all(promises);
 }
 
